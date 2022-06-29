@@ -15,8 +15,9 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
-    MapsFragment mapsFragment = new MapsFragment();
+    PetaFragmen petaFragmen = new PetaFragmen();
     SettingFragment settingFragment = new SettingFragment();
+    Aplikasi aplikasi = new Aplikasi();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,18 +25,22 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, mapsFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, petaFragmen).commit();
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, mapsFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, petaFragmen).commit();
                         return true;
 
                     case R.id.tentang:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, settingFragment).commit();
+                        return true;
+
+                    case R.id.aplikasi:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, aplikasi).commit();
                         return true;
                 }
 
